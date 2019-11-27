@@ -19,7 +19,7 @@ import javax.imageio.ImageIO;
  *
  * @author Derok
  */
-public class MonsterThread extends Thread{
+public class MonsterThread extends CustomThread{
     private int xpos, ypos, mobart, direction;
     private String mobname;
     private int i=0, x, y, k;
@@ -41,28 +41,23 @@ public class MonsterThread extends Thread{
     }
     public void run()
     {
-        while(true)
+        while(running)
         {
-            for(Monster monster : this.monsters) {
-                if(monster.getSleepDuration() > 0) {
-                    monster.sleep();
-                    if(monster.getSleepDuration() <= 0) {
-                        monster.initialRandomMove();
-                    }
-                } else if(monster.getMoveDuration() > 0) {
-                    monster.move();
-                    if(monster.getMoveDuration() <= 0) {
-                        monster.initialSleep();
+            if(this.tick()) {
+                for(Monster monster : this.monsters) {
+                    if(monster.getSleepDuration() > 0) {
+                        monster.sleep();
+                        if(monster.getSleepDuration() <= 0) {
+                            monster.initialRandomMove();
+                        }
+                    } else if(monster.getMoveDuration() > 0) {
+                        monster.move();
+                        if(monster.getMoveDuration() <= 0) {
+                            monster.initialSleep();
+                        }
                     }
                 }
-            }
-            try
-            {
-                Thread.sleep (35);
-            }
-            catch (InterruptedException ex)
-            {               
-            }        
+            }     
         }
     }
     

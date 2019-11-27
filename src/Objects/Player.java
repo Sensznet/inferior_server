@@ -81,6 +81,18 @@ public class Player {
     {
         this.hpmom = hpmom;
     }
+    public void recover() {
+        int recover = 1;
+        int maxhp = this.getMaxHp();
+        if(this.hpmom < maxhp) {
+            if(hpmom + recover > maxhp ) {
+                this.hpmom = maxhp;
+            } else {
+                this.hpmom += recover;
+            }
+        } 
+        
+    }
     public int getMaxHp()
     {
         return 200 + (this.lvl * 10) + (this.str * 3);
