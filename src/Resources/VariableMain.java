@@ -3,6 +3,7 @@ package Resources;
 
 import Objects.Player;
 import java.util.ArrayList;
+import java.util.HashMap;
 import packageDB.SimpleQuery;
 
 /*
@@ -17,13 +18,12 @@ import packageDB.SimpleQuery;
 public class VariableMain 
 {
     private volatile static VariableMain varPlayer;
-    private ArrayList<Player> players = new ArrayList<>();
+    private final HashMap<Integer, Player> players = new HashMap<>();
     
     public VariableMain()
     {
         SimpleQuery sq = SimpleQuery.getInstance();
-        ArrayList<String[]> players = sq.getPlayers();
-        for(String[] player : players) {
+        for(String[] player : sq.getPlayers()) {
             this.addPlayer(
                     Integer.parseInt(player[0]),
                     Integer.parseInt(player[1]),
@@ -70,7 +70,7 @@ public class VariableMain
                 intel,
                 direction,
                 false);
-        this.players.add(newPlayer);
+        this.players.put(id, newPlayer);
     }
     
     public Player getPLayer(int arrayid) {
@@ -78,21 +78,14 @@ public class VariableMain
     }
     
     public Player findPlayerById(int id) {
-        for(Player player : this.players) {
-            if(player.getId() == id) {
-                return player;
-            }
-        }
-        return null;
+        return this.players.get(id);
     }
     
     public ArrayList<Player> getOnlinePlayers() {
-        ArrayList<Player> onlinePlayers = new ArrayList<Player>();
-        for(Player player : this.players) {
-            if(player.isOnline()) {
-                onlinePlayers.add(player);
-            }
-        }
+        ArrayList<Player> onlinePlayers = new ArrayList<>();
+        this.players.forEach((key, player) -> {
+            onlinePlayers.add(player);
+        });
         return onlinePlayers;
     }
 }

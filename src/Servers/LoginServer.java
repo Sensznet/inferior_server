@@ -13,8 +13,7 @@ import org.json.JSONObject;
  */
 public class LoginServer extends Server
 {
-    private int art;
-    private packageDB.SimpleQuery sq;
+    private final packageDB.SimpleQuery sq;
     LoginServer(Socket client, packageDB.SimpleQuery sq)
     {
         super(client);
