@@ -10,10 +10,10 @@ package Objects;
  * @author ssens
  */
 public class Player {
-    private int id;
+    private final int id;
     private int xpos;
     private int ypos;
-    private String name;
+    private final String name;
     private int hpmom;
     private int manamom;
     private int lvl;

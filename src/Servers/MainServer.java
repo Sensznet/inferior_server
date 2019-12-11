@@ -38,6 +38,18 @@ public class MainServer extends Server{
                         response.put("objectCount", 0);
                         response.put("xpos", this.player.getXpos());
                         response.put("ypos", this.player.getYpos());
+                        response.put("maxHp", this.player.getMaxHp());
+                        response.put("curHp", this.player.getCurrentHp());
+                        response.put("maxMana", this.player.getMaxMana());
+                        response.put("curMana", this.player.getCurrentMana());
+                        response.put("curExp", this.player.getCurrentExp());
+                        response.put("maxExp", this.player.getMaxExp());
+                        response.put("lvl", this.player.getlvl());
+                        response.put("agi", this.player.getAgi());
+                        response.put("int", this.player.getIntel());
+                        response.put("str", this.player.getStr());
+                        response.put("direction", this.player.getDirection());
+                        response.put("name", this.player.getName());
                         this.sendData(response);
                         this.player.setOnline();
                         break;
@@ -57,6 +69,7 @@ public class MainServer extends Server{
                         for(Player player : onlinePlayers) {
                             if(player != this.player) {
                                 JSONObject tplayer = new JSONObject();
+                                tplayer.put("id", player.getId());
                                 tplayer.put("xpos", player.getXpos());
                                 tplayer.put("ypos", player.getYpos());
                                 tplayer.put("direction", player.getDirection());
@@ -82,5 +95,10 @@ public class MainServer extends Server{
                 }
             }        
         }
+    }
+    
+    public void stopThread() {
+        this.player.setOffline();
+        super.stopThread();
     }
 }

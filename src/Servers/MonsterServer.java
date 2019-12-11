@@ -3,6 +3,7 @@ package Servers;
 
 import Threads.MonsterThread;
 import Objects.Monster;
+import Resources.VariableMonster;
 import java.net.*;
 import java.io.*;
 import org.json.*;
@@ -14,11 +15,11 @@ import org.json.*;
  */
 public class MonsterServer extends Server
 {
-    MonsterThread MT;
-    MonsterServer(Socket client, MonsterThread MT)
+    VariableMonster varMonster;
+    MonsterServer(Socket client)
     {
         super(client);
-        this.MT = MT;
+        this.varMonster = VariableMonster.getInstance();
     }
     public void run()
     {
@@ -30,7 +31,7 @@ public class MonsterServer extends Server
                 switch(request.getString("type")) {
                     case "refresh":
                         JSONArray monsters = new JSONArray();
-                        for(Monster tmonster : this.MT.getMonsters()) {
+                        for(Monster tmonster : varMonster.getMonsters()) {
                             JSONObject monster = new JSONObject();
                             monster.put("id", tmonster.getId());
                             monster.put("type", tmonster.getType());

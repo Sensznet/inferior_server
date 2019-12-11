@@ -5,6 +5,7 @@ import Threads.MonsterThread;
 import Resources.VariableMain;
 import Objects.Monster;
 import Objects.Player;
+import Resources.VariableMonster;
 
 /*
  * To change this template, choose Tools | Templates
@@ -18,14 +19,14 @@ import Objects.Player;
 public class OnlineChecker extends Thread
 {
     private VariableMain  varmain;
+    private VariableMonster varMonster;
     private Oberflaeche flaeche;
-    private MonsterThread monsterthread;
     private int p=1;
-    OnlineChecker(Oberflaeche flaeche, VariableMain  varmain, MonsterThread monsterthread)
+    OnlineChecker(Oberflaeche flaeche)
     {
         this.flaeche = flaeche;
-        this.varmain = varmain;
-        this.monsterthread = monsterthread;
+        varmain = VariableMain.getInstance();
+        varMonster = VariableMonster.getInstance();
         this.start();
     }
     public void run()
@@ -39,7 +40,7 @@ public class OnlineChecker extends Thread
                     String.valueOf(player.getXpos()),
                     String.valueOf(player.getYpos()));
             }
-            for(Monster monster : monsterthread.getMonsters()) {
+            for(Monster monster : varMonster.getMonsters()) {
                 flaeche.setTextMonsters(monster.getName(), String.valueOf(monster.getXpos()), String.valueOf(monster.getYpos()));
             }
             try

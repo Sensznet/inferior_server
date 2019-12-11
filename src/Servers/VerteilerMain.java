@@ -19,9 +19,9 @@ public class VerteilerMain extends Thread
     private Socket client;
     private VariableMain  varmain;
     private Oberflaeche flaeche;
-    public VerteilerMain(int port,Oberflaeche flaeche, VariableMain  varmain)
+    public VerteilerMain(int port,Oberflaeche flaeche)
     {
-        this.varmain = varmain;
+        this.varmain = VariableMain.getInstance();
         this.port = port;
         this.flaeche = flaeche;
         try

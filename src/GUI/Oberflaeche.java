@@ -2,7 +2,6 @@ package GUI;
 
 
 import Threads.MonsterThread;
-import Resources.VariableMain;
 import Servers.VerteilerMain;
 import Servers.VerteilerMonster;
 import Servers.VerteilerLogin;
@@ -23,29 +22,25 @@ import Threads.WorldThread;
  * @author  Derok
  */
 public class Oberflaeche extends javax.swing.JFrame{
-    private VerteilerMain vtm;
-    private VerteilerLogin vtl;
-    private VerteilerChat vtc;
-    private VerteilerUpdater vtu;
-    private VerteilerMonster vtmob;
-    private VariableMain  varmain;
-    private OnlineChecker checker;
-    private packageDB.SimpleQuery sq;
-    private MonsterThread MT;
-    private WorldThread WT;
+    private final VerteilerMain vtm;
+    private final VerteilerLogin vtl;
+    private final VerteilerChat vtc;
+    private final VerteilerUpdater vtu;
+    private final VerteilerMonster vtmob;
+    private final OnlineChecker checker;
+    private final MonsterThread MT;
+    private final WorldThread WT;
     private int p=1;
     public Oberflaeche() {
         initComponents();
-        sq = new packageDB.SimpleQuery();
-        varmain = new VariableMain(sq.getPlayers());
         MT = new MonsterThread();
-        WT = new WorldThread(varmain);
-        vtm = new VerteilerMain(3114, this, varmain);
-        vtl = new VerteilerLogin(3115, this, sq);
+        WT = new WorldThread();
+        vtm = new VerteilerMain(3114, this);
+        vtl = new VerteilerLogin(3115, this);
         vtc = new VerteilerChat(3116, this);
         vtu = new VerteilerUpdater(3117, this);
-        vtmob = new VerteilerMonster(3118, this, MT);
-        checker = new OnlineChecker(this, varmain, MT);
+        vtmob = new VerteilerMonster(3118, this);
+        checker = new OnlineChecker(this);
     }
     public void setText(String a)
     {

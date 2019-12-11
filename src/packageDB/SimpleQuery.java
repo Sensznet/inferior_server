@@ -14,6 +14,8 @@ import java.util.logging.Logger;
  * @author trix <(^+^)>
  */
 public class SimpleQuery extends Thread{
+    private volatile static SimpleQuery sq;
+    
     private static final String hostname="localhost";
     private static final String port="3306";
     private static final String dbname="mmog";
@@ -70,6 +72,18 @@ public class SimpleQuery extends Thread{
 
         }
     }
+    
+    public static SimpleQuery getInstance() {
+        if(sq == null) {
+            synchronized (SimpleQuery.class) {
+                if(sq == null) {
+                    sq = new SimpleQuery();
+                }
+            }
+        }
+        return sq;
+    }
+    
     public static int getIDbyNAME(String Name) 
             /*
              *  RESULT = INT || if error int=0 --> name/id nicht vorhanden

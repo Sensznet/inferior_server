@@ -17,12 +17,10 @@ public class VerteilerMonster extends Thread
     private int port;
     private ServerSocket servermob;
     private Socket client;
-    private MonsterThread MT;
     private Oberflaeche flaeche;
-    public VerteilerMonster(int port, Oberflaeche flaeche, MonsterThread MT)
+    public VerteilerMonster(int port, Oberflaeche flaeche)
     {
         this.port = port;
-        this.MT = MT;
         this.flaeche = flaeche;
         try
         {
@@ -40,7 +38,7 @@ public class VerteilerMonster extends Thread
             {
                 client = servermob.accept();
                 flaeche.setText("Incoming Mob Connection from " + client.getInetAddress());
-                new MonsterServer(client, MT);
+                new MonsterServer(client);
                 
             }
             catch(IOException e)

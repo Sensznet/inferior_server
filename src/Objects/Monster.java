@@ -6,19 +6,24 @@
 package Objects;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 
 /**
  *
  * @author ssens
  */
 public class Monster {
-    private int id;
+    private final int id;
     private int xpos;
     private int ypos;
-    private int type;
+    private final int type;
     private int direction;
-    private String name;
+    private final String name;
     private int maxHp;
     private int curHp;
     private int moveduration = 0;
@@ -88,7 +93,7 @@ public class Monster {
     public void move() {
         int tempx = this.xpos + this.xmove;
         int tempy = this.ypos + this.ymove;
-        if(this.collisionImage.getRGB(tempx+550, tempy+420) < -1) {
+        if(this.collisionImage.getRGB(tempx, tempy) < -1) {
         } else {
             this.xpos = tempx;
             this.ypos = tempy;

@@ -16,10 +16,10 @@ import java.util.Date;
  */
 public class WorldThread extends CustomThread{
     private VariableMain main;
-    private int healthtick = 5;
+    private final int healthtick = 5;
     private Date healthlast = new Date();
-    public WorldThread(VariableMain main) {
-        this.main = main;
+    public WorldThread() {
+        this.main = VariableMain.getInstance();
     }
     
      public void run()

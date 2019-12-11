@@ -4,19 +4,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/G:/Dokumente/hostv3/src/Threads/WorldThread.java</file>
-            <file>file:/G:/Dokumente/hostv3/src/Servers/VerteilerChat.java</file>
-            <file>file:/G:/Dokumente/hostv3/src/Servers/LoginServer.java</file>
-            <file>file:/G:/Dokumente/hostv3/src/GUI/OnlineChecker.java</file>
-            <file>file:/G:/Dokumente/hostv3/src/Servers/ChatServer.java</file>
-            <file>file:/G:/Dokumente/hostv3/src/Servers/Server.java</file>
-            <file>file:/G:/Dokumente/hostv3/src/Resources/VariableMain.java</file>
-            <file>file:/G:/Dokumente/hostv3/src/Resources/VariableChat.java</file>
-            <file>file:/G:/Dokumente/hostv3/src/packageDB/SimpleQuery.java</file>
-            <file>file:/G:/Dokumente/hostv3/src/Servers/MonsterServer.java</file>
-            <file>file:/G:/Dokumente/hostv3/src/GUI/Oberflaeche.java</file>
-            <file>file:/G:/Dokumente/hostv3/src/Servers/MainServer.java</file>
-            <file>file:/G:/Dokumente/hostv3/src/Threads/MonsterThread.java</file>
+            <file>file:/C:/Users/ssens/git/inferior_server/src/Threads/CustomThread.java</file>
+            <file>file:/C:/Users/ssens/git/inferior_server/src/Threads/WorldThread.java</file>
+            <file>file:/C:/Users/ssens/git/inferior_server/src/GUI/Oberflaeche.java</file>
+            <file>file:/C:/Users/ssens/git/inferior_server/src/Threads/MonsterThread.java</file>
+            <file>file:/C:/Users/ssens/git/inferior_server/src/Objects/Player.java</file>
         </group>
     </open-files>
 </project-private>

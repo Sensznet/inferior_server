@@ -7,6 +7,7 @@ package Servers;
 import GUI.Oberflaeche;
 import java.net.*;
 import java.io.*;
+import packageDB.SimpleQuery;
 /**
  *
  * @author Derok
@@ -17,10 +18,10 @@ public class VerteilerLogin extends Thread
     private ServerSocket serverlogin;
     private Socket client;
     private Oberflaeche flaeche;
-    private packageDB.SimpleQuery sq;
-    public VerteilerLogin(int port, Oberflaeche flaeche, packageDB.SimpleQuery sq)
+    private SimpleQuery sq;
+    public VerteilerLogin(int port, Oberflaeche flaeche)
     {
-        this.sq = sq;
+        this.sq = SimpleQuery.getInstance();
         this.port = port;
         this.flaeche = flaeche;
         try

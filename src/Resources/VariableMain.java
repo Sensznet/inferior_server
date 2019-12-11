@@ -3,6 +3,7 @@ package Resources;
 
 import Objects.Player;
 import java.util.ArrayList;
+import packageDB.SimpleQuery;
 
 /*
  * To change this template, choose Tools | Templates
@@ -15,10 +16,13 @@ import java.util.ArrayList;
  */
 public class VariableMain 
 {
+    private volatile static VariableMain varPlayer;
     private ArrayList<Player> players = new ArrayList<>();
     
-    public VariableMain(ArrayList<String[]> players)
+    public VariableMain()
     {
+        SimpleQuery sq = SimpleQuery.getInstance();
+        ArrayList<String[]> players = sq.getPlayers();
         for(String[] player : players) {
             this.addPlayer(
                     Integer.parseInt(player[0]),
@@ -35,6 +39,20 @@ public class VariableMain
                     Integer.parseInt(player[11]),
                     false);
         }        
+    }
+    
+    public static VariableMain getInstance() {
+        if(varPlayer == null) {
+            // To make thread safe 
+            synchronized (VariableMain.class) 
+            { 
+                // check again as multiple threads 
+                // can reach above step 
+                if (varPlayer==null) 
+                    varPlayer = new VariableMain(); 
+            } 
+        }
+        return varPlayer;
     }
     
     public void addPlayer(int id, int xpos, int ypos, String name, int hpmom, int manamom, int lvl, int exp, int str, int agi, int intel, int direction, boolean online) {
