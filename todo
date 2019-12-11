@@ -1,5 +1,8 @@
 - VariableMain zu -> VarPlayer
+- VariableChat zu -> VarChat
 - VarMonster erstellen
     -> Monster von MonsterThread nach VarMonster
-- SimpleQuery, VarPlayer und VarMonster singleton design pattern anwenden (static aufrufbar)
+- SimpleQuery, VarChat, VarPlayer und VarMonster singleton design pattern anwenden (static aufrufbar)
     -> entsprechend cleanup
+
+https://www.geeksforgeeks.org/singleton-design-pattern/
